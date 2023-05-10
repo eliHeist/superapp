@@ -1,0 +1,35 @@
+{% extends 'heistadmin_base.djhtml' %}
+
+{% block nav_menu %}
+   {% for model in models %}
+      <li><a href="{% url 'heistadmin:list' slug=model %}">{{model}}</a></li>
+   {% endfor %}
+{% endblock nav_menu %}
+
+{% block pagination %}
+   <li><a>{{ slug }}</a></li>
+   <li><a>{{ object }}</a></li>
+{% endblock pagination %}
+
+{% block main %}
+   <section class="main_content">
+      <form method="POST" class="update_form heist_form" enctype="multipart/form-data">
+         {% csrf_token %}
+         {{ form.as_p }}
+
+         {% if formset %}
+         <div class="inlineformset">
+            {{ formset.as_p }}
+         </div>
+         {% endif %}
+
+         <p>
+            <button class="delete">
+               <a href="{% url 'heistadmin:delete' slug=slug pk=object.pk %}" target="_blank" rel="noopener noreferrer">Delete</a>
+            </button>
+            <button type="submit">Update</button>
+         </p>
+      </form>
+   </section>
+{% endblock main %}
+

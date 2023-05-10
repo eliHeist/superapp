@@ -1,0 +1,104 @@
+{% load static %}
+
+<footer class="bg-white">
+   <div class="container mx-auto px-2">
+      <div class="py-12 md:py-24">
+         <div class="grid grid-cols-12 gap-2">
+            <div class="order-1 md:order-1 mt-14 md:mt-0 col-span-12 md:col-span-4 lg:col-span-3 xl:col-span-3">
+               <figure>
+                  <div>
+                     <img alt="" role="presentation" aria-hidden="true" src="{% static 'assets/logo-sm.webp' %}"
+                        class=" h-8 object-contain">
+                  </div>
+               </figure>
+               <menu title="Social menu, footer" class="text-xl mt-5 xl:mt-7 flex gap-2">
+                  <div title="Instagram link"
+                     class="p-2 w-11 h-11 rounded-full border-2 border-grey-100 aspect-[1/1] grid justify-center content-center">
+                     <a href="#"><i class="fab fa-instagram"></i></a>
+                  </div>
+                  <div title="Whatsapp direct chat link"
+                     class="p-2 w-11 h-11 rounded-full border-2 border-grey-100 aspect-[1/1] grid justify-center content-center">
+                     <a href="#"><i class="fab fa-whatsapp"></i></a>
+                  </div>
+                  <div title="Email link"
+                     class="p-2 w-11 h-11 rounded-full border-2 border-grey-100 aspect-[1/1] grid justify-center content-center">
+                     <a href="#"><i class="fas fa-envelope-open"></i></a>
+                  </div>
+                  <div title="Facebook link"
+                     class="p-2 w-11 h-11 rounded-full border-2 border-grey-100 aspect-[1/1] grid justify-center content-center">
+                     <a href="#"><i class="fab fa-facebook"></i></a>
+                  </div>
+               </menu>
+            </div>
+            <div class="order-3 mt-12 md:mt-20 xl:mt-0 xl:order-2 col-span-12 xl:col-span-5">
+               <div class="grid grid-cols-12 gap-4">
+                  <div class="col-span-6 sm:col-span-4 md:col-span-4">
+                     <h3 class="font-semibold mb-4">Customer Service</h3>
+                     <ul class="text-sm text-grey-600 mt-8">
+                        <li><a class="hover:underline" href="https://attireshop.com/returns/">Returns &amp; Exchanges</a>
+                        </li>
+                        <li><a class="hover:underline" href="https://attireshop.com/account/">My Account</a></li>
+                        <li><a class="hover:underline" href="https://attireshop.com/contact/sizing-help/"
+                              aria-current="page">Sizing Help</a></li>
+                        <li><a class="hover:underline" href="https://attireshop.com/store-locations/">Store Locations</a>
+                        </li>
+                        <li><a class="hover:underline" href="https://attireshop.gorgias.help/en-US" target="_blank"
+                              rel="noopener noreferrer">Help Center</a></li>
+                     </ul>
+                  </div>
+                  <div class="col-span-12 md:col-span-3 hidden">
+                     <h3 class="font-semibold mb-4">Company</h3>
+                     <ul class="text-sm text-grey-600 mt-8">
+                        <li><a class="hover:underline" href="https://attireshop.com/about/">About Us</a></li>
+                        <li><a class="hover:underline" href="https://attireshop.com/insiders/">attireshop Insiders</a></li>
+                        <li><a class="hover:underline" href="https://attireshop.com/how-it-works/">How It Works</a></li>
+                        <li><a class="hover:underline" href="https://attireshop.com/blogs/news/">News &amp; Events</a>
+                        </li>
+                        <li><a class="hover:underline" href="https://attireshop.com/sustainability/">Sustainability</a>
+                        </li>
+                        <li><a class="hover:underline" href="https://attireshop.com/careers/">Careers</a></li>
+                     </ul>
+                  </div>
+                  <div class="col-span-6 sm:col-span-4 md:col-span-4">
+                     <h3 class="font-semibold mb-4">Contact Us</h3>
+                     <ul class="text-sm text-grey-600 mt-8">
+                        <li>+1 (773) 303-6006</li>
+                        <li>info@attireshop.com</li>
+                        <li><a class="hover:underline" href="https://attireshop.com/contact/">Contact Form</a></li>
+                     </ul>
+                  </div>
+                  <div class="col-span-6 sm:col-span-4 md:col-span-4">
+                     <h3 class="font-semibold mb-4">Legal</h3>
+                     <ul class="text-sm text-grey-600 mt-8">
+                        <li><a class="hover:underline" href="https://attireshop.com/terms/terms-of-service/">Terms of
+                              Service</a></li>
+                        <li><a class="hover:underline" href="https://attireshop.com/terms/privacy-policy/">Privacy
+                              Policy</a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <div class="order-2 col-span-12 md:col-span-8 md:order-2 xl:order-3 xl:col-span-4">
+               <div class="xl:border-l xl:border-grey-300 lg:pl-10 2xl:pl-14 xl:min-h-[260px] mt-10">
+                  <h3 class="font-medium mb-3">Sign up for emails</h3>
+                  <p class="my-8 text-grey-600 text-sm">Sign up to receive exclusive AttireShop news, updates, deals, and more!</p>
+                  <form class="grid">
+                     <label for="email" class="sr-only">Sign up for emails</label>
+                     <div class="flex outline outline-1 rounded-sm overflow-hidden">
+                        <input type="email" name="email" value="" id="email" placeholder="Enter email address" class="appearance-none border-none text-grey-600 p-3 px-4 text-sm w-[75%] xl:w-[70%] h-[50px]">
+                        <button type="submit" class="w-[25%] xl:w-[30%] font-mono text-sm uppercase tracking-wide bg-black text-white p-3 px-2 border-none h-[50px]" aria-label="Submit">
+                           <span class="font-mono font-semibold">Submit</span>
+                        </button>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="py-6 flex justify-between">
+         <p class="text-sm text-grey-700">© Copyright 2023 AttireShop</p>
+         <p class="text-sm text-grey-700">Designed by Amartislab</p>
+      </div>
+   </div>
+</footer>

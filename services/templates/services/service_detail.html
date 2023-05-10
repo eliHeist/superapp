@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% load crispy_forms_filters, static %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="display-4">{{ service.name }}</h1>
+        <p>{{ service.description }}</p>
+        {% if request.user.is_authenticated %}
+        <hr>
+        <a href="{% url 'services:service-delete' service.pk %}" class="text-decoration-none text-danger">Delete</a>
+        <a href="{% url 'services:service-update' service.pk %}" class="text-decoration-none">Update</a>
+        {% endif %}
+    </div>
+{% endblock content %}

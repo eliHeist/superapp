@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% load crispy_forms_filters, static %}
+
+{% block styles %}
+    <title>Update photos | Vector Uganda Ltd</title>
+{% endblock styles %}
+
+{% block content %}
+    <div class="container">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ formset|crispy }}
+            <input type="submit" value="Update" class="btn btn-primary">
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% load static %}
+
+{% block content %}
+<div class="container">
+    <h2 class="display-6">{{ project.name }}</h2>
+    <div class="d-flex">
+        <h4 class="fw-light">Client: </h4>
+        <h4 class="fw-light ms-4">{{ project.client }}</h4>
+    </div>
+    <div class="d-flex">
+        <h4 class="fw-light">Year: </h4>
+        <h4 class="fw-light ms-4">{{ project.year }}</h4>
+    </div>
+    <p>{{ project.description }}</p>
+    <div class="accordion" id="images">
+        <h2 class="accordion-header" id="heading-1">
+            <button class="accordion-button bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#photos" aria-expanded="true" aria-controls="photos">
+                Photos</button>
+        </h2>
+        <div class="accordion-collapse collapse" id="photos" aria-labelledby="heading-1" data-bs-parent="#images">
+            <div class="row">
+                {% if project.photos.first %}
+                {% for image in project.photos.all %}
+                <div class="image col-lg-3 col-md-4 col-sm-12">
+                    <img src="{{ image.image.url }}" alt="" class="img-fluid">
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="image col-lg-12 col-md-12 col-sm-12">
+                    <h2 class="small">
+                        No photos yet
+                    </h2>
+                </div>
+                {% endif %}
+                {% if request.user.is_authenticated %}
+                <a class="text-decoration-none" href="{% url 'projects:project-photo-update' project.pk %}">Update Photos</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% if request.user.is_authenticated %}
+    <hr>
+    <a class="text-danger text-decoration-none" href="{% url 'projects:project-delete' project.pk %}">Delete</a>
+    <a class="text-decoration-none" href="{% url 'projects:project-update' project.pk %}">Update</a>
+    {% endif %}
+</div>
+{% endblock content %}

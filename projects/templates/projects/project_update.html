@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% load crispy_forms_filters, static %}
+
+{% block styles %}
+    <title>Update project | Vector Uganda Ltd</title>
+{% endblock styles %}
+
+{% block content %}
+    <div class="container">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="d-flex align-items-center">
+                <a class="mx-3 text-decoration-none" href="{% url 'projects:project-photo-update' pk %}">Update Photos</a>
+                <input class="btn btn-primary" type="submit" value="Update">
+            </div>
+        </form>
+
+    </div>
+{% endblock content %}

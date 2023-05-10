@@ -1,0 +1,51 @@
+{% extends 'heistadmin_base.djhtml' %}
+
+{% block nav_menu %}
+   {% for model in models %}
+      <li><a href="{% url 'heistadmin:list' slug=model %}">{{model}}</a></li>
+   {% endfor %}
+{% endblock nav_menu %}
+
+{% block pagination %}
+   <li><a>{{ slug }}s</a></li>
+{% endblock pagination %}
+
+{% block main %}
+   <section class="main_content functions">
+      <div class="grid">
+         <div class="options">
+            <div class="title">
+               <p>Options</p>
+            </div>
+            <div class="crud_options">
+               <a href="{% url 'heistadmin:create' slug=slug %}">Create {{model}}</a>
+            </div>
+         </div>
+         <div>
+            
+            {% if prev_action_message %}
+               <p class="message">{{ prev_action_message }}</p>
+            {% endif %}
+               
+         </div>
+      </div>
+   </section>
+   <section class="main_content">
+      <table class="list_table">
+         <thead>
+            <th>Name</th>
+         </thead>
+         <tbody>
+            
+            {% for object in objects %}
+               <tr>
+                  <td>
+                     <a href="{% url 'heistadmin:update' slug=slug pk=object.pk %}">{{ object }}</a>
+                  </td>
+               </tr>
+            {% endfor %}
+               
+         </tbody>
+      </table>
+   </section>
+{% endblock main %}

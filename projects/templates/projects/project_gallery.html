@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% load crispy_forms_filters, static %}
+
+{% block styles %}
+    <title>Gallery at Vector Uganda Ltd</title>
+
+<!-- <link rel="stylesheet" href="{% static 'js/lightbox/css/lightbox.min.css' %}"> -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+<!-- <script src="{% static 'js/lightbox/js/lightbox-plus-jquery.min.js' %}"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
+
+<!-- local dev -->
+<!-- <link rel="stylesheet" href="{% static 'node_modules\lightbox2\dist\css\lightbox.min.css' %}">
+<script src="{% static 'node_modules\lightbox2\dist\js\lightbox-plus-jquery.min.js' %}"></script> -->
+
+{% endblock styles %}
+
+{% block content %}
+<div class="gallery py-5">
+    <div class="container">
+        <div class="row justify-content-between">
+            {% for project in projects %}
+            {% if project.photos.first %}
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <a class="card w-90 text-decoration-none border-white" href="{{ project.photos.first.image.url }}" data-lightbox="mygallery{{ project.id }}" data-title="{{ project.name }}">
+                    <div class="card-img-top">
+                        <img src="{{ project.picture.url }}" class="img-fluid object-cover" alt="{{ project.name }}">
+                    </div>
+                    <div class="p-0 card-body text-center">
+                        <h5 class="p-0 card-title small">{{ project.name }}</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="hidden">
+                {% for photo in project.photos.all %}
+                    {% if photo != project.photos.first %}
+                        <a href="{{ photo.image.url }}" data-lightbox="mygallery{{ project.id }}" data-title="{{ project.name }}"></a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

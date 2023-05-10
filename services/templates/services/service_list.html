@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% load crispy_forms_filters, static %}
+
+{% block content %}
+<!-- services -->
+<div class="services">
+    <div class="container">
+        <h1 class="display-4 text-center text-uppercase">
+            our services
+        </h1>
+    </div>
+    <div class="container">
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'services:service-create' %}" class="h4 text-primary text-decoration-none d-flex justify-content-end w-100">Add a service</a>
+        {% endif %}
+        <div class="row justify-content-between">
+            {% for service in services %}
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="text-start py-5 px-3 w-90 my-3">
+                    <h4 class="fw-bold"><a class="text-decoration-none" href="{% url 'services:service-detail' service.pk %}">{{ service.name }}</a></h4>
+                    <p class="">
+                        {{ service.description }}
+                    </p>
+                </div>
+            </div>
+           {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

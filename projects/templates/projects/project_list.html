@@ -1,0 +1,44 @@
+{% extends 'base.html' %} {% load static %}
+
+{% block styles %}
+    <title>Projects done by Vector Uganda Ltd</title>
+{% endblock styles %}
+
+{% block content %}
+<!-- projects -->
+<div class="projects py-5">
+    <div class="container">
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'projects:project-create' %}" class="h4 text-primary text-decoration-none d-flex justify-content-end w-100 rounded">Add a project</a>
+        {% endif %}
+        <div class="border border-altlight rounded mt-3 p-0">
+            <table class="table rounded">
+                <thead>
+                    <tr class="bg-dark text-light">
+                        <th scope="col">Project</th>
+                        <th scope="col" class="d-none d-sm-block">Client</th>
+                        <th scope="col">Year</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for project in projects %}
+                    <tr class="border border-white">
+                        <th scope="row"><a class="text-decoration-none" href="{% url 'projects:project-detail' project.pk %}">{{ project.name }}</a></th>
+                        <td class="d-none d-sm-block">{{ project.client }}</td>
+                        <td>{{ project.year }}</td>
+                        <td>
+                            {% if project.status == 'Ongoing' %}
+                            <span class="rounded-pill btn-sm bg-altlight text-dark fw-bold p-1">{{ project.status }}</span>
+                            {% elif project.status == 'Completed' %}
+                            <span class="rounded-pill btn-sm bg-altsuccess text-success fw-bold p-1">{{ project.status }}</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}
